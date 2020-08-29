@@ -2,11 +2,11 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Models from "../screens/Models";
-import Favorites from "../screens/Favorites";
-import TopModels from '../screens/TopModels';
-import Account from '../screens/Account';
-import Search from '../screens/Search';
+import ModelsStack from './ModelsStack';
+import FavoritesStack from './FavoritesStack';
+import TopModelsStack from './TopModelsStack';
+import SearchStack from './SearchStack';
+import AccountStack from './AccoutStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,27 +16,27 @@ export default function Navigation() {
       <Tab.Navigator>
         <Tab.Screen
           name="models"
-          component={Models}
+          component={ModelsStack}
           options={{ title: "Models" }}
         />
         <Tab.Screen
-          name="favorites"
-          component={Favorites}
-          options={{ title: "Favorites" }}
+          name="favoritesStaFavoritesStack"
+          component={FavoritesStack}
+          options={{ title: "FavoritesStack" }}
         />
         <Tab.Screen
           name="top-models"
-          component={TopModels}
+          component={TopModelsStack}
           options={{ title: "Top 5" }}
         />
         <Tab.Screen
           name="search"
-          component={Search}
+          component={SearchStack}
           options={{ title: "Search" }}
         />
         <Tab.Screen
           name="account"
-          component={Account}
+          component={AccountStack}
           options={{ title: "Account" }}
         />
 
