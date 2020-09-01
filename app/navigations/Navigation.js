@@ -1,28 +1,37 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ModelsStack from './ModelsStack';
-import FavoritesStack from './FavoritesStack';
-import TopModelsStack from './TopModelsStack';
-import SearchStack from './SearchStack';
-import AccountStack from './AccoutStack';
+import { Icon } from "react-native-elements";
+import ModelsStack from "./ModelsStack";
+import FavoritesStack from "./FavoritesStack";
+import TopModelsStack from "./TopModelsStack";
+import SearchStack from "./SearchStack";
+import AccountStack from "./AccoutStack";
 
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        initialRouteName="models"
+        tabBarOptions={{
+          inactiveTintColor: "#646464",
+          activeTintColor: "#00a680",
+        }}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color }) => screenOptions(route, color),
+        })}
+      >
         <Tab.Screen
           name="models"
           component={ModelsStack}
           options={{ title: "Models" }}
         />
         <Tab.Screen
-          name="favoritesStaFavoritesStack"
+          name="favorites"
           component={FavoritesStack}
-          options={{ title: "FavoritesStack" }}
+          options={{ title: "Favorites" }}
         />
         <Tab.Screen
           name="top-models"
@@ -39,11 +48,38 @@ export default function Navigation() {
           component={AccountStack}
           options={{ title: "Account" }}
         />
-
-        
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({});
+function screenOptions(route, color) {
+  let iconName;
+
+  switch (route.name) {
+    case "models":
+      iconName = "compass-outline";
+      break;
+      case "favorites":
+        iconName = "heart-outline";
+        break;
+      case "top-models":
+        iconName = "star-outline";
+        break;
+      case "search":
+        iconName = "magnify";
+        break;
+      case "search":
+        iconName = "magnify";
+        break;
+      case "account":
+        iconName = "home-outline";
+        break;
+    default:
+      break;
+  }
+  return (
+<Icon type="material-community" name={iconName} size={22} color={color} />
+    
+  );
+}
