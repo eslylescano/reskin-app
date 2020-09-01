@@ -60,26 +60,25 @@ function screenOptions(route, color) {
     case "models":
       iconName = "compass-outline";
       break;
-      case "favorites":
-        iconName = "heart-outline";
-        break;
-      case "top-models":
-        iconName = "star-outline";
-        break;
-      case "search":
-        iconName = "magnify";
-        break;
-      case "search":
-        iconName = "magnify";
-        break;
-      case "account":
-        iconName = "home-outline";
-        break;
+    case "favorites":
+      iconName = "heart-outline";
+      break;
+    case "top-models":
+      iconName = "star-outline";
+      break;
+    case "search":
+      iconName = "magnify";
+      break;
+    case "search":
+      iconName = "magnify";
+      break;
+    case "account":
+      iconName = "home-outline";
+      break;
     default:
       break;
   }
   return (
-<Icon type="material-community" name={iconName} size={22} color={color} />
-    
+    <Icon type="material-community" name={iconName} size={22} color={color} />
   );
 }
