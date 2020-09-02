@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import * as firebase from 'firebase';
 import UserGuest from './UserGuest';
 import UserLogged from './UserLogged';
+import Loading from '../../components/Loading';
 
 
 
@@ -13,7 +14,7 @@ export default function Account() {
             !user?setLogin(false):setLogin(true);
         });
     }, [])
-    if(login===null) return <Text>Loaging</Text>
+    if(login===null) return <Loading isVisible={true} text="Loading..."></Loading>
 
     return login ?<UserLogged/>:<UserGuest/>
 }
