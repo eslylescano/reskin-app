@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { Input, Button } from 'react-native-elements'
+import { Input, Button, Icon } from 'react-native-elements'
 
 
 export default function RegisterForm() {
@@ -9,18 +9,39 @@ export default function RegisterForm() {
             <Input
             placeholder="Email"
             containerStyle={styles.inputForm}
+            rightIcon={
+                <Icon
+                type="material-community"
+                name="at"
+                iconStyle={styles.iconRight}
+                />
+            }
             />
             <Input
             placeholder="Password"
             containerStyle={styles.inputForm}
             password={true}
             secureTextEntry={true}
+            rightIcon={
+                <Icon
+                type="material-community"
+                name="eye-outline"
+                iconStyle={styles.iconRight}
+                />
+            }
             />
             <Input
             placeholder="Repeat Password"
             containerStyle={styles.inputForm}
             password={true}
             secureTextEntry={true}
+            rightIcon={
+                <Icon
+                type="material-community"
+                name="eye-outline"
+                iconStyle={styles.iconRight}
+                />
+            }
             />
             <Button
             title="Join"
@@ -45,5 +66,8 @@ const styles = StyleSheet.create({
     },
     btnRegister:{
      backgroundColor:"#00a680"   
+    },
+    iconRight:{
+       color:"#c1c1c1" 
     }
 })
