@@ -1,15 +1,25 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Input, Button, Icon } from "react-native-elements";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showRepeatPassword, setShowRepeatPassword] = useState(false)
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const [formData, setFormData] = useState(defaultFormValue());
+
+  const onSubmit = () => {
+    console.log(formData);
+  };
+
+  const onChange=(e,type)=>{
+    setFormData({...formData,[type]:e.nativeEvent.text});
+  }
   return (
     <View style={styles.fromContainer}>
       <Input
         placeholder="Email"
         containerStyle={styles.inputForm}
+        onChange={e=>onChange(e,"email")}
         rightIcon={
           <Icon
             type="material-community"
@@ -23,6 +33,7 @@ export default function RegisterForm() {
         containerStyle={styles.inputForm}
         password={true}
         secureTextEntry={!showPassword}
+        onChange={e=>onChange(e,"password")}
         rightIcon={
           <Icon
             type="material-community"
@@ -37,6 +48,7 @@ export default function RegisterForm() {
         containerStyle={styles.inputForm}
         password={true}
         secureTextEntry={!showRepeatPassword}
+        onChange={e=>onChange(e,"repeatPassword")}
         rightIcon={
           <Icon
             type="material-community"
@@ -50,10 +62,19 @@ export default function RegisterForm() {
         title="Join"
         containerStyle={styles.containerRegister}
         buttonStyle={styles.btnRegister}
+        onPress={ onSubmit}
       />
     </View>
   );
 }
+
+const defaultFormValue = () => {
+  return {
+    email: "",
+    password: "",
+    repeatPassword: "",
+  };
+};
 
 const styles = StyleSheet.create({
   fromContainer: {
